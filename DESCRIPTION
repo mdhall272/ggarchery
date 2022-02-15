@@ -1,0 +1,12 @@
+Package: ggarchery
+Type: Package
+Depends: R (>= 4.1.2)
+Imports: ggplot2, magrittr, dplyr, plyr, glue
+Title: Flexible segment geoms with arrows for ggplot2
+Version: 1.0.0
+Author@R: person("Matthew", "Hall", "matthew.hall@bdi.ox.ac.uk", role = c("aut", "cre"))
+Description: Geoms for placing arrowheads at multiple points along a segment, not just at the end; position function to shift starts and ends of arrows to avoid exactly intersecting points
+License: MIT
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 7.1.2
