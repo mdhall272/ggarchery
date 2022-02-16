@@ -26,9 +26,11 @@ other along the line joining them, by either a proportional amount or a fixed di
 }
 \examples{
 
+ library(tidyverse)
  # Generate some dummy data
 
- ten.points <- tibble(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10), position = rep(c("start", "end"), 5))
+ ten.points <- data.frame(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10),
+                          position = rep(c("start", "end"), 5))
  five.segments <- ten.points \%>\% pivot_wider(names_from = position, values_from = c(x,y))
 
  # Ten percent off the start and end
@@ -43,7 +45,8 @@ other along the line joining them, by either a proportional amount or a fixed di
  ggplot(five.segments) +
    geom_point(data = ten.points, aes(x = x, y = y)) +
    geom_arrowsegment(aes(x = x_start, xend = x_end, y = y_start, yend = y_end),
-                     position = position_attractsegment(end_shave = 0.02, type_shave = "distance")) +
+                     position = position_attractsegment(end_shave = 0.02,
+                                                        type_shave = "distance")) +
    coord_fixed()
 }
 \concept{position adjustments}

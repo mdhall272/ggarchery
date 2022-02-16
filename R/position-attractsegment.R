@@ -5,18 +5,22 @@
 #' the position that they are "pointing from" or "pointing to". It works by shifting the points towards each
 #' other along the line joining them, by either a proportional amount or a fixed distance.
 #'
+#'
 #' @family position adjustments
 #' @param start_shave,end_shave The amount of distance to "shave" off the line between (`x`,`y`) and (`xend`,`yend`),
 #' at, respectively, the start and the end. Can be zero; cannot be negative. Units are determined by `type_shave`.
 #' @param type_shave If "proportion" (the default) then this is a proportion of the total line length. If "distance"
 #' then it is instead the raw distance along the line. The is only really recommended in combination with
 #' [ggplot2::coord_fixed()]; results can be quite odd otherwise.
+#' @import ggplot2 tidyverse
 #' @export
 #' @examples
 #'
+#'  library(tidyverse)
 #'  # Generate some dummy data
 #'
-#'  ten.points <- tibble(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10), position = rep(c("start", "end"), 5))
+#'  ten.points <- data.frame(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10),
+#'                           position = rep(c("start", "end"), 5))
 #'  five.segments <- ten.points %>% pivot_wider(names_from = position, values_from = c(x,y))
 #'
 #'  # Ten percent off the start and end
@@ -31,7 +35,8 @@
 #'  ggplot(five.segments) +
 #'    geom_point(data = ten.points, aes(x = x, y = y)) +
 #'    geom_arrowsegment(aes(x = x_start, xend = x_end, y = y_start, yend = y_end),
-#'                      position = position_attractsegment(end_shave = 0.02, type_shave = "distance")) +
+#'                      position = position_attractsegment(end_shave = 0.02,
+#'                                                         type_shave = "distance")) +
 #'    coord_fixed()
 position_attractsegment <- function(start_shave = 0, end_shave = 0, type_shave = c("proportion", "distance")) {
   ggproto(NULL, PositionAttractSegment,
@@ -56,6 +61,7 @@ attract_proportionally <- function(x, xend, y, yend, prop_start, prop_end){
 #' @param prop_start,prop_end How much to take off the start and end of the line (in the units of the data; beware this can make little sense unless both axes have the same units)
 #' @return A named list of new coordinates for the start and end of the line
 #' @keywords internal
+#' @import glue rlang
 #' @export
 attract_by_distance <- function(x, xend, y, yend, length_start, length_end){
   euclidean_distance <- sqrt((x-xend)^2 + (y-yend)^2)
@@ -71,7 +77,8 @@ attract_by_distance <- function(x, xend, y, yend, length_start, length_end){
 
 }
 
-#' @rdname ggplot2-ggproto
+#' @rdname ggalluvial-ggarchery
+#' @import ggplot2 grid
 #' @format NULL
 #' @usage NULL
 #' @export
