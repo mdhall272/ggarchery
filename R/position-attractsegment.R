@@ -77,7 +77,7 @@ attract_by_distance <- function(x, xend, y, yend, length_start, length_end){
 
 }
 
-#' @rdname ggalluvial-ggarchery
+#' @rdname ggarchery-ggproto
 #' @import ggplot2 grid
 #' @format NULL
 #' @usage NULL

@@ -4,7 +4,7 @@
 \docType{data}
 \name{GeomArrowSegment}
 \alias{GeomArrowSegment}
-\alias{ggalluvial-ggarchery}
+\alias{ggarchery-ggproto}
 \alias{PositionAttractSegment}
 \title{Base ggproto classes for ggarchery}
 \description{

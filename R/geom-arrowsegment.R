@@ -18,6 +18,7 @@
 #' or `arrow(ends = "both")` if you prefer. Just remember that the final segment is
 #' only an arrow at all if the last entry of `arrow_positions` is 1.
 #'
+#'
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_segment
 #' @param arrow_positions A vector of distinct points on the unit interval. 0 is not
@@ -147,7 +148,7 @@ split_arrows <- function(x, xend, y, yend, splits){
   data.frame(segment = 1:length(x.starts), x = x.starts, xend = x.ends, y = y.starts, yend = y.ends)
 }
 
-#' @rdname ggalluvial-ggarchery
+#' @rdname ggarchery-ggproto
 #' @format NULL
 #' @usage NULL
 #' @import ggplot2 grid
