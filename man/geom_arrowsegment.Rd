@@ -89,6 +89,9 @@ rather than combining with them. This is most useful for helper functions
 that define both data and aesthetics and shouldn't inherit behaviour from
 the default plot specification, e.g. \code{\link[ggplot2:borders]{borders()}}.}
 }
+\value{
+A ggproto object
+}
 \description{
 `geom_arrowsegment()` is parameterised much as [geom_segment()], and the default
 `geom_arrowsegment()` is equivalent to `geom_segment(arrow = arrow())`. (It is

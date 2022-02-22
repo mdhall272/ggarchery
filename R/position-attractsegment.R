@@ -14,6 +14,7 @@
 #' [ggplot2::coord_fixed()]; results can be quite odd otherwise.
 #' @import ggplot2 tidyverse
 #' @export
+#' @return A ggproto object
 #' @examples
 #'
 #'  library(tidyverse)

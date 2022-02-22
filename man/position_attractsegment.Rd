@@ -18,6 +18,9 @@ at, respectively, the start and the end. Can be zero; cannot be negative. Units 
 then it is instead the raw distance along the line. The is only really recommended in combination with
 [ggplot2::coord_fixed()]; results can be quite odd otherwise.}
 }
+\value{
+A ggproto object
+}
 \description{
 This position function is primarily intended for use with [geom_arrowsegment()], and solves the problem
 that the user may, for reasons of clarity or aesthetics, not want their arrows to actually start or end at

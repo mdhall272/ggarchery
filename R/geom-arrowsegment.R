@@ -18,7 +18,6 @@
 #' or `arrow(ends = "both")` if you prefer. Just remember that the final segment is
 #' only an arrow at all if the last entry of `arrow_positions` is 1.
 #'
-#'
 #' @inheritParams ggplot2::layer
 #' @inheritParams ggplot2::geom_segment
 #' @param arrow_positions A vector of distinct points on the unit interval. 0 is not
@@ -39,6 +38,7 @@
 #' the `arrow_fill` option in [`geom_segment`].
 #' @import ggplot2 tidyverse
 #' @export
+#' @return A ggproto object
 #' @examples
 #'
 #'  library(tidyverse)
