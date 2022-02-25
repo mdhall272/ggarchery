@@ -23,7 +23,7 @@ ggplot(tbl) +
   ylim(c(0,1))
 ```
 
-![](man/images/geom_segment_example.pdf)
+![test](man/figures/geom_segment_example.png)
 
 ```
 ggplot(tbl) + 
