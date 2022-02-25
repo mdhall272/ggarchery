@@ -32,3 +32,38 @@ ggplot(tbl) +
   ylim(c(0,1))
 ```
 
+<img src="man/figures/geom_arrowsegment_example1.png" width="400"/>
+
+The `arrows` parameter of `geom_arrowsegment()` also behaves exactly like the `arrow` parameter of `geom_segment`, as a call to `grid::arrow()`:
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrows = arrow(type = 'closed')) + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example2.png" width="400"/>
+
+Now for the interesting bit. Suppose that we would like the arrowhead to appear at the midpoint of the segment, rather than the end. This can be done by specifying `arrow_positions = 0.5`.
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = 0.5) + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example3.png" width="400"/>
+
+Control of the arrow segment works as before:
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = 0.5, arrows = arrow(type = 'closed') + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example4.png" width="400"/>
+
