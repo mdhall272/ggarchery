@@ -97,13 +97,6 @@ geom_arrowsegment <- function(mapping = NULL, data = NULL,
                               show.legend = NA,
                               inherit.aes = TRUE) {
 
-  # if the arrows argument is not a list of arrows, make it one
-
-  if(!is.null(attr(arrows,'class'))){
-    if(attr(arrows,'class') == "arrow"){
-      arrows <- list(arrows)
-    }
-  }
 
   layer(
     data = data,
@@ -167,6 +160,14 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
 
                             draw_panel = function(data, panel_params, coord, arrows = list(arrow()), arrow_fills = NULL, arrow_positions = 1,
                                                   lineend = "butt", linejoin = "round", na.rm = FALSE) {
+
+                              # if the arrows argument is not a list of arrows, make it one
+
+                              if(!is.null(attr(arrows,'class'))){
+                                if(attr(arrows,'class') == "arrow"){
+                                  arrows <- list(arrows)
+                                }
+                              }
 
                               if(arrow_positions[1] == 0){
                                 # The arrow can't orient itself properly if the first segment is of length zero
