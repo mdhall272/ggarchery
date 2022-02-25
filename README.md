@@ -176,7 +176,7 @@ ggplot(pt.tbl) +
 
 <img src="man/figures/position_attractsegment_example2.png" width="400"/>
 
-`position_attractsegment()` works by shortening the segment at the start and the end. It can do this in two ways, as determined by the `type_shave` option. If `type_shave = "proportion"` (the default), then it takes the proprtions `shave_start` and `shave_end' away:
+`position_attractsegment()` works by shortening the segment at the start and the end (by "attracting" the start and end points towards each other). It can do this in two ways, as determined by the `type_shave` option. If `type_shave = "proportion"` (the default), then it takes the proportions `start_shave` and `end_shave` away:
 
 ```
 ggplot(pt.tbl) + 
@@ -192,3 +192,37 @@ ggplot(pt.tbl) +
 ```
 
 <img src="man/figures/position_attractsegment_example3.png" width="400"/>
+
+Alternatively, if type_shave = "distance" then the amount removed is in graph units. This allows for finer control, but has strange effects if the dimensions of the x and y axes are not the same and is only really recommended in combination with `coord_fixed()`.
+
+```
+ggplot(pt.tbl)+
+  geom_segment(data = sg.tbl, aes(x = x, xend = xend, y = y, yend = yend), arrow = arrow(), 
+               position = position_attractsegment(start_shave = 0, end_shave = 0.05, type_shave = "distance")) +
+  geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
+  geom_text(aes(x,y, label = labels))  +
+  xlim(c(0, 1)) +
+  ylim(c(0, 1)) +
+  scale_fill_discrete(guide = "none") +
+  coord_fixed()
+```
+
+<img src="man/figures/position_attractsegment_example4.png" width="400"/>
+
+(Note here we shaved only the end of the segment, and drew the segment first.)
+
+`geom_arrowsegment()` and `position_attractsegment()` can naturally be used in combination:
+
+```
+ggplot(pt.tbl)+
+  geom_arrowsegment(data = sg.tbl, aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = 0.6, arrows = arrow(length = unit(0.1, "inches")), 
+               position = position_attractsegment(start_shave = 0, end_shave = 0.05, type_shave = "distance")) +
+  geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
+  geom_text(aes(x,y, label = labels))  +
+  xlim(c(0, 1)) +
+  ylim(c(0, 1)) +
+  scale_fill_discrete(guide = "none") +
+  coord_fixed()
+```
+
+<img src="man/figures/position_attractsegment_example5.png" width="400"/>
