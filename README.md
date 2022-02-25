@@ -141,3 +141,22 @@ ggplot(mtcars) +
            arrows = arrow(type = "closed", length = unit(0.1, "inches")))
 ```
 <img src="man/figures/annotate_example.png" width="800"/>
+
+
+## `position_attractsegment()` allows you to automatically shave the ends of arrow segments
+
+`position_attractsegment()` is intended to solve the following problem. Suppose you have nicely laid out a set of labelled points:
+
+```
+pt.tbl <- tibble(x = c(0.25, 0.5, 0.75), y = c(0.25, 0.5, 0.75), labels = c("A", "B", "C"))
+
+ggplot(pt.tbl) + 
+  geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
+  geom_text(aes(x,y, label = labels)) +
+  xlim(c(0, 1)) +
+  ylim(c(0, 1)) +
+  scale_fill_discrete(guide = "none")
+```
+
+<img src="man/figures/position_attractsegment_example1.png", width="400"/>
+
