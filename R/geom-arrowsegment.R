@@ -86,21 +86,23 @@
 #'                                      arrow(angle = 25, ends = "both")),
 #'                        arrow_fills = "indianred")
 geom_arrowsegment <- function(mapping = NULL, data = NULL,
-                               stat = "identity", position = "identity",
-                               ...,
-                               arrows = list(arrow()),
-                               arrow_fills = NULL,
-                               arrow_positions = 1,
-                               lineend = "butt",
-                               linejoin = "round",
-                               na.rm = FALSE,
-                               show.legend = NA,
-                               inherit.aes = TRUE) {
+                              stat = "identity", position = "identity",
+                              ...,
+                              arrows = list(arrow()),
+                              arrow_fills = NULL,
+                              arrow_positions = 1,
+                              lineend = "butt",
+                              linejoin = "round",
+                              na.rm = FALSE,
+                              show.legend = NA,
+                              inherit.aes = TRUE) {
 
   # if the arrows argument is not a list of arrows, make it one
 
-  if(attr(arrows,'class') == "arrow"){
-    arrows <- list(arrows)
+  if(!is.null(attr(arrows,'class'))){
+    if(attr(arrows,'class') == "arrow"){
+      arrows <- list(arrows)
+    }
   }
 
   layer(
@@ -231,16 +233,16 @@ GeomArrowSegment <- ggproto("GeomArrowSegment", GeomSegment,
                                     current.arrow <- NULL
                                   }
                                   segmentsGrob(bundle$x, bundle$y, bundle$xend, bundle$yend,
-                                              default.units = "native",
-                                              gp = gpar(
-                                                col = alpha(bundle$colour, bundle$alpha),
-                                                fill = alpha(arrow_fills[sg], bundle$alpha),
-                                                lwd = bundle$size * .pt,
-                                                lty = bundle$linetype,
-                                                lineend = lineend,
-                                                linejoin = linejoin
-                                              ),
-                                              arrow = current.arrow
+                                               default.units = "native",
+                                               gp = gpar(
+                                                 col = alpha(bundle$colour, bundle$alpha),
+                                                 fill = alpha(arrow_fills[sg], bundle$alpha),
+                                                 lwd = bundle$size * .pt,
+                                                 lty = bundle$linetype,
+                                                 lineend = lineend,
+                                                 linejoin = linejoin
+                                               ),
+                                               arrow = current.arrow
                                   )
                                 })
 
