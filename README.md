@@ -60,10 +60,22 @@ Control of the arrow segment works as before:
 
 ```
 ggplot(tbl) + 
-  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = 0.5, arrows = arrow(type = 'closed') + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = 0.5, arrows = arrow(type = 'closed')) + 
   xlim(c(0,1)) +
   ylim(c(0,1))
 ```
 
 <img src="man/figures/geom_arrowsegment_example4.png" width="400"/>
 
+Other aesthetics also work as you would hope:
+
+```
+tbl <- tbl %>% mutate(col = c("A", "B"))
+
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, col = col), arrow_positions = 0.5)  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example5.png" width="400"/>
