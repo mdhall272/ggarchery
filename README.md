@@ -140,4 +140,4 @@ ggplot(mtcars) +
            arrow_positions = 0.6, 
            arrows = arrow(type = "closed", length = unit(0.1, "inches")))
 ```
-<img src="man/figures/annotate_example.png" width="400"/>
+<img src="man/figures/annotate_example.png" width="800"/>
