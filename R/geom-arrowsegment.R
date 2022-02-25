@@ -165,7 +165,7 @@ split_arrows <- function(x, xend, y, yend, splits){
 #' @export
 GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
 
-                            draw_panel = function(data, panel_params, coord, arrows = list(arrow()), arrow_fills = NULL, arrow_positions = list(1),
+                            draw_panel = function(data, panel_params, coord, arrows = list(arrow()), arrow_fills = NULL, arrow_positions = 1,
                                                   lineend = "butt", linejoin = "round", na.rm = FALSE) {
 
                               if(arrow_positions[1] == 0){
