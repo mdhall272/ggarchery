@@ -83,7 +83,7 @@ attract_by_distance <- function(x, xend, y, yend, length_start, length_end){
 #' @format NULL
 #' @usage NULL
 #' @export
-PositionAttractSegment <- ggproto("PositionAttractSegment", ggplot2::Position,
+PositionAttractsegment <- ggproto("PositionAttractsegment", ggplot2::Position,
                                   required_aes = c("x", "y", "xend", "yend"),
                                   setup_params = function(self, data) {
                                     list(

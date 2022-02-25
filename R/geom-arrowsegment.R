@@ -109,7 +109,7 @@ geom_arrowsegment <- function(mapping = NULL, data = NULL,
     data = data,
     mapping = mapping,
     stat = stat,
-    geom = GeomArrowSegment,
+    geom = GeomArrowsegment,
     position = position,
     show.legend = show.legend,
     inherit.aes = inherit.aes,
@@ -163,7 +163,7 @@ split_arrows <- function(x, xend, y, yend, splits){
 #' @usage NULL
 #' @import ggplot2 grid
 #' @export
-GeomArrowSegment <- ggproto("GeomArrowSegment", GeomSegment,
+GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
 
                             draw_panel = function(data, panel_params, coord, arrows = list(arrow()), arrow_fills = NULL, arrow_positions = list(1),
                                                   lineend = "butt", linejoin = "round", na.rm = FALSE) {

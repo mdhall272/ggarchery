@@ -2,10 +2,10 @@
 % Please edit documentation in R/geom-arrowsegment.R, R/ggproto.R,
 %   R/position-attractsegment.R
 \docType{data}
-\name{GeomArrowSegment}
-\alias{GeomArrowSegment}
+\name{GeomArrowsegment}
+\alias{GeomArrowsegment}
 \alias{ggarchery-ggproto}
-\alias{PositionAttractSegment}
+\alias{PositionAttractsegment}
 \title{Base ggproto classes for ggarchery}
 \description{
 Base ggproto classes for ggarchery
