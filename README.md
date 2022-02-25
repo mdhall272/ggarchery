@@ -126,3 +126,18 @@ ggplot(tbl) +
 ```
 
 <img src="man/figures/geom_arrowsegment_example9.png" width="400"/>
+
+Finally, the geom can be used as an annotation:
+
+```
+ggplot(mtcars) + 
+  geom_point(aes(x = disp, y=hp)) + 
+  annotate(geom = "arrowsegment", 
+           x = 170, 
+           y=200, 
+           xend = 145, 
+           yend = 175, 
+           arrow_positions = 0.6, 
+           arrows = arrow(type = "closed", length = unit(0.1, "inches")))
+```
+<img src="man/figures/annotation_example.png" width="400"/>
