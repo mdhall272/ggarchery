@@ -40,7 +40,7 @@
 #'                                                         type_shave = "distance")) +
 #'    coord_fixed()
 position_attractsegment <- function(start_shave = 0, end_shave = 0, type_shave = c("proportion", "distance")) {
-  ggproto(NULL, PositionAttractSegment,
+  ggproto(NULL, PositionAttractsegment,
           start_shave = start_shave,
           end_shave = end_shave,
           type_shave = match.arg(type_shave)
