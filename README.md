@@ -215,8 +215,10 @@ ggplot(pt.tbl)+
 
 ```
 ggplot(pt.tbl)+
-  geom_arrowsegment(data = sg.tbl, aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = 0.6, arrows = arrow(length = unit(0.1, "inches")), 
-               position = position_attractsegment(start_shave = 0, end_shave = 0.05, type_shave = "distance")) +
+  geom_arrowsegment(data = sg.tbl, aes(x = x, xend = xend, y = y, yend = yend), 
+                    arrow_positions = 0.6, 
+                    arrows = arrow(length = unit(0.1, "inches")), 
+                    position = position_attractsegment(start_shave = 0, end_shave = 0.05, type_shave = "distance")) +
   geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
   geom_text(aes(x,y, label = labels))  +
   xlim(c(0, 1)) +
