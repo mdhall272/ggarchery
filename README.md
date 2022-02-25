@@ -79,3 +79,14 @@ ggplot(tbl) +
 ```
 
 <img src="man/figures/geom_arrowsegment_example5.png" width="400"/>
+
+You can also define multiple arrowheads by making `arrow_positions` a vector of length greater than 1. All values are expected to fall between 0 and 1, and not be exactly 0:
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, col = col), arrow_positions = c(0.25, 0.75))  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example6.png" width="400"/>
