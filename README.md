@@ -84,9 +84,45 @@ You can also define multiple arrowheads by making `arrow_positions` a vector of 
 
 ```
 ggplot(tbl) + 
-  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, col = col), arrow_positions = c(0.25, 0.75))  + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = c(0.25, 0.75))  + 
   xlim(c(0,1)) +
   ylim(c(0,1))
 ```
 
 <img src="man/figures/geom_arrowsegment_example6.png" width="400"/>
+
+If one value is 1, then the arrowhead appears at the end:
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = c(0.25, 1))  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example7.png" width="400"/>
+
+The look of each arrow can also be controlled separately by making `arrows` a list:
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = c(0.25, 1), arrows = list(arrow(angle = 10), arrow(type = 'closed')))  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example8.png" width="400"/>
+
+The `arrow_fills` option also mimics `arrow.fill` of `geom_segment()` but can be a vector.
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), 
+                    arrow_positions = c(0.25, 1), 
+                    arrow_fills = c("indianred3", "dodgerblue3"), 
+                    arrows = arrow(type = "closed"))  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example9.png" width="400"/>
