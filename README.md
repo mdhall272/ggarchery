@@ -158,5 +158,37 @@ ggplot(pt.tbl) +
   scale_fill_discrete(guide = "none")
 ```
 
-<img src="man/figures/position_attractsegment_example1.png", width="400"/>
+<img src="man/figures/position_attractsegment_example1.png" width="400"/>
 
+If you wish to connect these points using geom_segment() with an arrow, the output is a little ugly, as the lines intersect the points:
+
+```
+sg.tbl <- tibble(x = c(0.25, 0.5), y = c(0.25, 0.5), xend = c(0.5, 0.75), yend = c(0.5, 0.75))
+
+ggplot(pt.tbl) + 
+  geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
+  geom_text(aes(x,y, label = labels)) +
+  geom_segment(data = sg.tbl, aes(x = x, xend = xend, y = y, yend = yend), arrow = arrow()) +
+  xlim(c(0, 1)) +
+  ylim(c(0, 1)) +
+  scale_fill_discrete(guide = "none")
+```
+
+<img src="man/figures/position_attractsegment_example2.png" width="400"/>
+
+`position_attractsegment()` works by shortening the segment at the start and the end. It can do this in two ways, as determined by the `type_shave` option. If `type_shave = "proportion"` (the default), then it takes the proprtions `shave_start` and `shave_end' away:
+
+```
+ggplot(pt.tbl) + 
+  geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
+  geom_text(aes(x,y, label = labels)) +
+  geom_segment(data = sg.tbl, 
+               aes(x = x, xend = xend, y = y, yend = yend), 
+               arrow = arrow(), 
+               position = position_attractsegment(start_shave = 0.1, end_shave = 0.1)) +
+  xlim(c(0, 1)) +
+  ylim(c(0, 1)) +
+  scale_fill_discrete(guide = "none")
+```
+
+<img src="man/figures/position_attractsegment_example3.png" width="400"/>
