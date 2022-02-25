@@ -228,3 +228,7 @@ ggplot(pt.tbl)+
 ```
 
 <img src="man/figures/position_attractsegment_example5.png" width="400"/>
+
+## Limitations
+
+Current these replace only `geom_segment()` and work only for linear coordinate systems. I would like to extend to `geom_curve()` but the intricacies of `grid::curveGrob()` make that much more complicated. I am unsure if allowing these for the `geom_line()` and `geom_path()` parameterisations would be especially useful, but I'm happy to be told they would be.
