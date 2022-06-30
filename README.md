@@ -14,7 +14,7 @@ library(ggarchery)
 tbl <- tibble(x = c(0.1, 0.2), xend = c(0.1, 0.8), y = c(0.1, 0.5), yend = c(0.7, 0.9))
 ```
 
-The default behaviour of `geom_arrowsegment()` mimics that of `geom_arrowsegment(arrow = arrow())`
+The default behaviour of `geom_arrowsegment()` mimics that of `geom_segment(arrow = arrow())`
 
 ```
 ggplot(tbl) + 
