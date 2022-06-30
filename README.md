@@ -93,7 +93,7 @@ ggplot(tbl) +
 
 <img src="man/figures/geom_arrowsegment_example6.png" width="400"/>
 
-If one value is 1, then the arrowhead appears at the end:
+If one value is 1, then the final arrowhead appears at the end:
 
 ```
 ggplot(tbl) + 
