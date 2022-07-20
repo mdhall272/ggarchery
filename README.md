@@ -14,7 +14,7 @@ library(ggarchery)
 tbl <- tibble(x = c(0.1, 0.2), xend = c(0.1, 0.8), y = c(0.1, 0.5), yend = c(0.7, 0.9))
 ```
 
-The default behaviour of `geom_arrowsegment()` mimics that of `geom_arrowsegment(arrow = arrow())`
+The default behaviour of `geom_arrowsegment()` mimics that of `geom_segment(arrow = arrow())`
 
 ```
 ggplot(tbl) + 
@@ -60,7 +60,9 @@ Control of the arrow segment works as before:
 
 ```
 ggplot(tbl) + 
-  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = 0.5, arrows = arrow(type = 'closed')) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), 
+                    arrow_positions = 0.5, 
+                    arrows = arrow(type = 'closed')) + 
   xlim(c(0,1)) +
   ylim(c(0,1))
 ```
@@ -91,7 +93,7 @@ ggplot(tbl) +
 
 <img src="man/figures/geom_arrowsegment_example6.png" width="400"/>
 
-If one value is 1, then the arrowhead appears at the end:
+If one value is 1, then the final arrowhead appears at the end:
 
 ```
 ggplot(tbl) + 
@@ -106,7 +108,8 @@ The look of each arrow can also be controlled separately by making `arrows` a li
 
 ```
 ggplot(tbl) + 
-  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = c(0.25, 1), arrows = list(arrow(angle = 10), arrow(type = 'closed')))  + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrow_positions = c(0.25, 1), 
+                    arrows = list(arrow(angle = 10), arrow(type = 'closed')))  + 
   xlim(c(0,1)) +
   ylim(c(0,1))
 ```
@@ -168,7 +171,9 @@ sg.tbl <- tibble(x = c(0.25, 0.5), y = c(0.25, 0.5), xend = c(0.5, 0.75), yend =
 ggplot(pt.tbl) + 
   geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
   geom_text(aes(x,y, label = labels)) +
-  geom_segment(data = sg.tbl, aes(x = x, xend = xend, y = y, yend = yend), arrow = arrow()) +
+  geom_segment(data = sg.tbl, 
+               aes(x = x, xend = xend, y = y, yend = yend), 
+               arrow = arrow()) +
   xlim(c(0, 1)) +
   ylim(c(0, 1)) +
   scale_fill_discrete(guide = "none")
@@ -218,7 +223,9 @@ ggplot(pt.tbl)+
   geom_arrowsegment(data = sg.tbl, aes(x = x, xend = xend, y = y, yend = yend), 
                     arrow_positions = 0.6, 
                     arrows = arrow(length = unit(0.1, "inches")), 
-                    position = position_attractsegment(start_shave = 0, end_shave = 0.05, type_shave = "distance")) +
+                    position = position_attractsegment(start_shave = 0, 
+                                                       end_shave = 0.05, 
+                                                       type_shave = "distance")) +
   geom_point(aes(x,y, fill = labels), size =6, shape = 21) +
   geom_text(aes(x,y, label = labels))  +
   xlim(c(0, 1)) +
