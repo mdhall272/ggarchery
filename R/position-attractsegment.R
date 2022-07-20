@@ -17,7 +17,10 @@
 #' @return A ggproto object
 #' @examples
 #'
-#'  library(tidyverse)
+#'  library(ggplot2)
+#'  library(magrittr)
+#'  library(tidyr)
+#'
 #'  # Generate some dummy data
 #'
 #'  ten.points <- data.frame(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10),
@@ -63,6 +66,7 @@ attract_proportionally <- function(x, xend, y, yend, prop_start, prop_end){
 #' @return A named list of new coordinates for the start and end of the line
 #' @keywords internal
 #' @import glue
+#' @importFrom rlang warn
 #' @export
 attract_by_distance <- function(x, xend, y, yend, length_start, length_end){
   euclidean_distance <- sqrt((x-xend)^2 + (y-yend)^2)

@@ -29,7 +29,10 @@ other along the line joining them, by either a proportional amount or a fixed di
 }
 \examples{
 
- library(tidyverse)
+ library(ggplot2)
+ library(magrittr)
+ library(tidyr)
+
  # Generate some dummy data
 
  ten.points <- data.frame(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10),
