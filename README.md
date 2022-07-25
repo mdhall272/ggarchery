@@ -163,7 +163,7 @@ ggplot(pt.tbl) +
 
 <img src="man/figures/position_attractsegment_example1.png" width="400"/>
 
-If you wish to connect these points using geom_segment() with an arrow, the output is a little ugly, as the lines intersect the points:
+If you wish to connect these points using `geom_segment()` with an arrow, the output is a little ugly, as the lines intersect the points:
 
 ```
 sg.tbl <- tibble(x = c(0.25, 0.5), y = c(0.25, 0.5), xend = c(0.5, 0.75), yend = c(0.5, 0.75))
@@ -198,7 +198,7 @@ ggplot(pt.tbl) +
 
 <img src="man/figures/position_attractsegment_example3.png" width="400"/>
 
-Alternatively, if type_shave = "distance" then the amount removed is in graph units. This allows for finer control, but has strange effects if the dimensions of the x and y axes are not the same and is only really recommended in combination with `coord_fixed()`.
+Alternatively, if `type_shave = "distance"` then the amount removed is in graph units. This allows for finer control, but has strange effects if the dimensions of the x and y axes are not the same and is only really recommended in combination with `coord_fixed()`.
 
 ```
 ggplot(pt.tbl)+
