@@ -161,4 +161,5 @@ only an arrow at all if the last entry of `arrow_positions` is 1.
                        arrows = list(arrow(angle = 45, type = "closed"),
                                      arrow(angle = 25, ends = "both")),
                        arrow_fills = "indianred")
+
 }

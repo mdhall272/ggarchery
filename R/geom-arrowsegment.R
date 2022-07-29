@@ -1,3 +1,6 @@
+#' @include legend-draw-ggarchery.R
+NULL
+
 #' Line segments with flexible arrows
 #'
 #' `geom_arrowsegment()` is parameterised much as [geom_segment()], and the default
@@ -89,6 +92,7 @@
 #'                        arrows = list(arrow(angle = 45, type = "closed"),
 #'                                      arrow(angle = 25, ends = "both")),
 #'                        arrow_fills = "indianred")
+#'
 geom_arrowsegment <- function(mapping = NULL, data = NULL,
                               stat = "identity", position = "identity",
                               ...,
@@ -100,7 +104,6 @@ geom_arrowsegment <- function(mapping = NULL, data = NULL,
                               na.rm = FALSE,
                               show.legend = NA,
                               inherit.aes = TRUE) {
-
 
   layer(
     data = data,
@@ -161,8 +164,8 @@ split_arrows <- function(x, xend, y, yend, splits){
 #' @import ggplot2 grid
 #' @export
 GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
-
-                            draw_panel = function(data, panel_params, coord, arrows = list(arrow()), arrow_fills = NULL, arrow_positions = 1,
+                            default_aes = aes(colour = "black", fill = "black", linewidth = 0.5, linetype = 1, size = 0.5, alpha = NA),
+                            draw_panel = function(self, data, panel_params, coord, arrows = list(arrow()), arrow_fills = NULL, arrow_positions = 1,
                                                   lineend = "butt", linejoin = "round", na.rm = FALSE) {
 
                               # if the arrows argument is not a list of arrows, make it one
@@ -193,19 +196,18 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
                                 abort("Arrowhead positions must be distinct")
                               }
 
-                              # Some users may inevitably place these out of order. Well, they can't.
+                              # Some users will inevitably place these out of order. Well, they can't.
 
                               arrow_positions <- sort(arrow_positions)
 
                               data <- remove_missing(data, na.rm = na.rm,
-                                                     c("x", "y", "xend", "yend", "linetype", "size", "shape"),
+                                                     c("x", "y", "xend", "yend", "linetype", "shape"),
                                                      name = "geom_segment")
+
                               if (nrow(data) == 0) return(zeroGrob())
 
                               if (coord$is_linear()) {
                                 coord <- coord$transform(data, panel_params)
-
-                                arrow_fills <- unlist(arrow_fills) %||% rep(coord$colour, length(arrows))
 
                                 if(arrow_positions[length(arrow_positions)] != 1){
                                   # arrow.positions = list(0.5) has one arrow at 0.5 but the line continues with no arrow
@@ -225,23 +227,32 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
                                   arrows <- rep(arrows, length(arrow_positions))
                                 }
 
-                                if(length(arrow_fills) == 1 & length(arrow_fills) > 1){
+                                if(!is.null(arrow_fills) & length(arrows) == 1 & length(arrow_fills) > 1){
                                   arrow_fills <- rep(arrow_fills, length(arrow_positions))
                                 }
 
 
                                 out <- map(1:max(newcoord$segment), function(sg){
+
                                   bundle <- newcoord %>% filter(segment == sg)
+
                                   if(sg <= length(arrows)){
                                     current.arrow <- arrows[[sg]]
                                   } else {
                                     current.arrow <- NULL
                                   }
+
+                                  if(is.null(arrow_fills)){
+                                    fill.value <- alpha(bundle$fill, bundle$alpha)
+                                  } else {
+                                    fill.value <- alpha(arrow_fills[sg], bundle$alpha)
+                                  }
+
                                   segmentsGrob(bundle$x, bundle$y, bundle$xend, bundle$yend,
                                                default.units = "native",
                                                gp = gpar(
                                                  col = alpha(bundle$colour, bundle$alpha),
-                                                 fill = alpha(arrow_fills[sg], bundle$alpha),
+                                                 fill = fill.value,
                                                  lwd = bundle$size * .pt,
                                                  lty = bundle$linetype,
                                                  lineend = lineend,
@@ -266,6 +277,5 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
                               # GeomPath$draw_panel(pieces, panel_params, coord, arrow = arrow,
                               #                     lineend = lineend)
                             },
-
-                            draw_key = draw_key_path
+                            draw_key = draw_key_arrowpath
 )
