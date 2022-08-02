@@ -209,12 +209,6 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
                               if (coord$is_linear()) {
                                 coord <- coord$transform(data, panel_params)
 
-                                if(arrow_positions[length(arrow_positions)] != 1){
-                                  # arrow.positions = list(0.5) has one arrow at 0.5 but the line continues with no arrow
-                                  # arrow.positions = as.list(c(0.5, 1)) puts two arrowheads at 0.5 and 1
-                                  # hence the last segment needs a NULL arrow in the former case
-                                  arrow_fills <- c(arrow_fills, NA_character_)
-                                }
 
                                 newcoord <- coord %>%
                                   mutate(new_locations = pmap(list(x,xend,y,yend), split_arrows, splits = arrow_positions)) %>%
@@ -227,10 +221,17 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
                                   arrows <- rep(arrows, length(arrow_positions))
                                 }
 
-                                if(!is.null(arrow_fills) & length(arrows) == 1 & length(arrow_fills) > 1){
+                                if(!is.null(arrow_fills) &  length(arrow_fills) == 1 & length(arrow_positions) > 1){
                                   arrow_fills <- rep(arrow_fills, length(arrow_positions))
                                 }
 
+
+                                if(!is.null(arrow_fills) & arrow_positions[length(arrow_positions)] != 1){
+                                  # arrow.positions = list(0.5) has one arrow at 0.5 but the line continues with no arrow
+                                  # arrow.positions = as.list(c(0.5, 1)) puts two arrowheads at 0.5 and 1
+                                  # hence the last segment needs a NULL arrow in the former case
+                                  arrow_fills <- c(arrow_fills, NA_character_)
+                                }
 
                                 out <- map(1:max(newcoord$segment), function(sg){
 
@@ -277,5 +278,7 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
                               # GeomPath$draw_panel(pieces, panel_params, coord, arrow = arrow,
                               #                     lineend = lineend)
                             },
-                            draw_key = draw_key_arrowpath
+                            draw_key = draw_key_arrowpath,
+                            rename_size = TRUE
+
 )

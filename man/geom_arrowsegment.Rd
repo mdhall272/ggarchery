@@ -13,6 +13,7 @@ geom_arrowsegment(
   arrows = list(arrow()),
   arrow_fills = NULL,
   arrow_positions = 1,
+  draw_legend_arrowheads = TRUE,
   lineend = "butt",
   linejoin = "round",
   na.rm = FALSE,
