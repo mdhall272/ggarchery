@@ -69,7 +69,7 @@ ggplot(tbl) +
 
 <img src="man/figures/geom_arrowsegment_example4.png" width="400"/>
 
-Other aesthetics also work as you would hope:
+Other aesthetics also work as you would hope. There is a subtle difference in the legend as displayed by `geom_segment` and `geom_arrowsegment`, however:
 
 ```
 tbl <- tbl %>% mutate(col = c("A", "B"))
@@ -82,6 +82,42 @@ ggplot(tbl) +
 
 <img src="man/figures/geom_arrowsegment_example5.png" width="400"/>
 
+Another key way that `geom_arrowsegment` differs from `geom_segment` is that it has a working `fill` aesthetic. This is only visible if the arrowhead is closed. Note that
+it must be specified as `fill` even if you want it to simply match the `colour` aesthetic.
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, fill = col), arrow_positions = 0.5, 
+                    arrows = arrow(type = "closed"))  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example6.png" width="400"/>
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, col = col), arrow_positions = 0.5, 
+                    arrows = arrow(type = "closed"))  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example7.png" width="400"/>
+
+
+```
+ggplot(tbl) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, fill = col, col = col), arrow_positions = 0.5, 
+                    arrows = arrow(type = "closed"))  + 
+  xlim(c(0,1)) +
+  ylim(c(0,1))
+```
+
+<img src="man/figures/geom_arrowsegment_example8.png" width="400"/>
+
+
+
 You can also define multiple arrowheads by making `arrow_positions` a vector of length greater than 1. All values are expected to fall between 0 and 1, and not be exactly 0:
 
 ```
@@ -91,7 +127,7 @@ ggplot(tbl) +
   ylim(c(0,1))
 ```
 
-<img src="man/figures/geom_arrowsegment_example6.png" width="400"/>
+<img src="man/figures/geom_arrowsegment_example9.png" width="400"/>
 
 If one value is 1, then the final arrowhead appears at the end:
 
@@ -102,7 +138,7 @@ ggplot(tbl) +
   ylim(c(0,1))
 ```
 
-<img src="man/figures/geom_arrowsegment_example7.png" width="400"/>
+<img src="man/figures/geom_arrowsegment_example10.png" width="400"/>
 
 The look of each arrow can also be controlled separately by making `arrows` a list:
 
@@ -114,9 +150,9 @@ ggplot(tbl) +
   ylim(c(0,1))
 ```
 
-<img src="man/figures/geom_arrowsegment_example8.png" width="400"/>
+<img src="man/figures/geom_arrowsegment_example11.png" width="400"/>
 
-The `arrow_fills` option also mimics `arrow.fill` of `geom_segment()` but can be a vector.
+The `arrow_fills` option also mimics `arrow.fill` of `geom_segment()` but can be a vector. As with a specification of `fill` outside the aesthetics, this takes precedence over a `fill` aesthetic.
 
 ```
 ggplot(tbl) + 
@@ -128,7 +164,7 @@ ggplot(tbl) +
   ylim(c(0,1))
 ```
 
-<img src="man/figures/geom_arrowsegment_example9.png" width="400"/>
+<img src="man/figures/geom_arrowsegment_example12.png" width="400"/>
 
 Finally, the geom can be used as an annotation:
 
@@ -238,4 +274,6 @@ ggplot(pt.tbl)+
 
 ## Limitations
 
-Current these replace only `geom_segment()` and work only for linear coordinate systems. I would like to extend to `geom_curve()` but the intricacies of `grid::curveGrob()` make that much more complicated. I am unsure if allowing these for the `geom_line()` and `geom_path()` parameterisations would be especially useful, but I'm happy to be told they would be.
+Current these replace only `geom_segment()` and work only for linear coordinate systems. I would like to extend to `geom_curve()` but the intricacies of `grid::curveGrob()` make that much more complicated. Also the fact that the specified arrow position corresponds to the arrowhead tip can make lines look a little lopsided; it would be much better if the specified point was the midpoint of the arrowhead instead, but this is very difficult using `grid::arrow()` because of the units specification. To do this I would probably need to draw my own arrowheads. Maybe one day...
+
+Next on my to-do list is extending to the `geom_line()` and `geom_path()` parameterisations.

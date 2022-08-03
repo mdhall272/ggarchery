@@ -59,7 +59,8 @@ time; otherwise the list is expected to have the same length as
 element of this one. The default is [grid::arrow()] with default parameters.}
 
 \item{arrow_fills}{A vector of fill colours for the arrowheads, behaves as
-the `arrow_fill` option in [`geom_segment`].}
+the `arrow_fill` option in [`geom_segment`]. This will overrule a fill aesthetic in
+the same way that specifying a single `fill` outside `aes` specification will.}
 
 \item{arrow_positions}{A vector of distinct points on the unit interval. 0 is not
 permitted but arbitrarily small values are; 1 is permitted. The default behaviour is that
@@ -98,7 +99,8 @@ A ggproto object
 `geom_arrowsegment()` is equivalent to `geom_segment(arrow = arrow())`. (It is
 assumed that the user wants some kind of arrow.) The extended functionality is to
 allow free placement of the arrowhead anywhere along the segment, and also multiple
-arrowheads.
+arrowheads, and to allow a fill aesthetic (which will only be visible for closed
+arrowheads).
 }
 \details{
 The function works by dividing the line up into 1 or more segment grobs, each of
