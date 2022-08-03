@@ -21,11 +21,10 @@ NULL
 #'                           position = rep(c("start", "end"), 5))
 #'  five.segments <- ten.points %>% pivot_wider(names_from = position, values_from = c(x,y))
 #'
-#'  # Default behaviour
-#'
 #'  ggplot(five.segments) +
 #'     geom_point(data = ten.points, aes(x = x, y = y)) +
-#'     geom_segment(aes(x = x_start, xend = x_end, y = y_start, yend = y_end), arrow = arrow(), key_glyph = draw_key_arrowpath())
+#'     geom_segment(aes(x = x_start, xend = x_end, y = y_start, yend = y_end), arrow = arrow(),
+#'                  key_glyph = draw_key_arrowpath)
 #'
 #' @rdname draw_key_arrowpath
 draw_key_arrowpath <- function(data, params, size) {
