@@ -9,6 +9,24 @@
 NULL
 
 #' @export
+#' @examples
+#'
+#'  library(ggplot2)
+#'  library(magrittr)
+#'  library(tidyr)
+#'
+#'  # Generate some dummy data
+#'
+#'  ten.points <- data.frame(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10),
+#'                           position = rep(c("start", "end"), 5))
+#'  five.segments <- ten.points %>% pivot_wider(names_from = position, values_from = c(x,y))
+#'
+#'  # Default behaviour
+#'
+#'  ggplot(five.segments) +
+#'     geom_point(data = ten.points, aes(x = x, y = y)) +
+#'     geom_segment(aes(x = x_start, xend = x_end, y = y_start, yend = y_end), arrow = arrow(), key_glyph = draw_key_arrowpath())
+#'
 #' @rdname draw_key_arrowpath
 draw_key_arrowpath <- function(data, params, size) {
 
@@ -18,19 +36,33 @@ draw_key_arrowpath <- function(data, params, size) {
     data$linetype[is.na(data$linetype)] <- 0
   }
 
+  # You can use this with geom_segment if you like
+
+  probably.geom_segment <- T
+
+  if(is.null(params$arrows) & !is.null(params$arrow)){
+    arrows <- params$arrow
+    arrow_positions <- 1
+    probably.geom_segment <- T
+  } else {
+    arrow_positions <- sort(params$arrow_positions)
+    arrows <- params$arrows
+  }
+
+  if(is.null(params$arrow_fills) & !is.null(params$arrow.fill)){
+    arrow_fills <- params$arrow
+    probably.geom_segment <- T
+  } else {
+    arrow_fills <- params$arrow_fills
+  }
+
   # this is somewhat maniacal
-
-  arrow_positions <- sort(params$arrow_positions)
-
-  arrows <- params$arrows
 
   if(!is.null(attr(arrows,'class'))){
     if(attr(arrows,'class') == "arrow"){
       arrows <- list(arrows)
     }
   }
-
-  arrow_fills <- params$arrow_fills
 
   if(length(arrows) == 1 & length(arrow_positions) > 1){
     arrows <- rep(arrows, length(arrow_positions))
@@ -72,10 +104,12 @@ draw_key_arrowpath <- function(data, params, size) {
       end.x <- 0.5 + sg*segment_length
     }
 
+    default.colour <- ifelse(probably.geom_segment, data$colour, "black")
+
     segmentsGrob(start.x, 0.5, end.x, 0.5,
                  gp = gpar(
                    col = alpha(data$colour %||% "black", data$alpha),
-                   fill = alpha(arrow_fills[sg] %||% data$fill %||% "black", data$alpha),
+                   fill = alpha(arrow_fills[sg] %||% data$fill %||% default.colour, data$alpha),
                    lwd = (data$linewidth %||% 0.5) * .pt,
                    lty = data$linetype %||% 1,
                    lineend = params$lineend %||% "butt"

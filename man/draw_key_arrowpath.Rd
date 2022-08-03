@@ -20,3 +20,22 @@ A grid grob.
 \description{
 This function [geom_segment()] for `geom_arrowsegment()` and displays all the requested arrowheads.
 }
+\examples{
+
+ library(ggplot2)
+ library(magrittr)
+ library(tidyr)
+
+ # Generate some dummy data
+
+ ten.points <- data.frame(line.no = rep(1:5, each = 2), x = runif(10), y = runif(10),
+                          position = rep(c("start", "end"), 5))
+ five.segments <- ten.points \%>\% pivot_wider(names_from = position, values_from = c(x,y))
+
+ # Default behaviour
+
+ ggplot(five.segments) +
+    geom_point(data = ten.points, aes(x = x, y = y)) +
+    geom_segment(aes(x = x_start, xend = x_end, y = y_start, yend = y_end), arrow = arrow(), key_glyph = draw_key_arrowpath())
+
+}
