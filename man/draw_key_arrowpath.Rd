@@ -2,10 +2,21 @@
 % Please edit documentation in R/legend-draw-ggarchery.R
 \name{draw_key_arrowpath}
 \alias{draw_key_arrowpath}
-\title{Test}
+\title{This function [geom_segment()] for `geom_arrowsegment()` and displays all the requested arrowheads.}
 \usage{
 draw_key_arrowpath(data, params, size)
 }
+\arguments{
+\item{data}{A single row data frame containing the scaled aesthetics to
+display in this key}
+
+\item{params}{A list of additional parameters supplied to the geom.}
+
+\item{size}{Width and height of key in mm.}
+}
+\value{
+A grid grob.
+}
 \description{
-Test
+This function [geom_segment()] for `geom_arrowsegment()` and displays all the requested arrowheads.
 }

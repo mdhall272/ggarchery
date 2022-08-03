@@ -1,4 +1,13 @@
-#' Draw the legend with the correct arrowheads.
+#' This function [geom_segment()] for `geom_arrowsegment()` and displays all the requested arrowheads.
+#'
+#' @return A grid grob.
+#' @param data A single row data frame containing the scaled aesthetics to
+#'   display in this key
+#' @param params A list of additional parameters supplied to the geom.
+#' @param size Width and height of key in mm.
+#' @name draw_key_arrowpath
+NULL
+
 #' @export
 #' @rdname draw_key_arrowpath
 draw_key_arrowpath <- function(data, params, size) {
