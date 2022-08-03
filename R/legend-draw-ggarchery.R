@@ -1,4 +1,4 @@
-#' Test
+#' Draw the legend with the correct arrowheads.
 #' @export
 #' @rdname draw_key_arrowpath
 draw_key_arrowpath <- function(data, params, size) {
