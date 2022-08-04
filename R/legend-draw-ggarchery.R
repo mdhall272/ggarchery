@@ -1,4 +1,4 @@
-#' This function [geom_segment()] for `geom_arrowsegment()` and displays all the requested arrowheads.
+#' This function replaces [`ggplot2::draw_key_path`] and displays all the requested arrowheads.
 #'
 #' @return A grid grob.
 #' @param data A single row data frame containing the scaled aesthetics to

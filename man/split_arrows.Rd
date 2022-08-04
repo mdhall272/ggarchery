@@ -13,7 +13,7 @@ split_arrows(x, xend, y, yend, splits)
 segment into sub-segments, which will each receive an arrowhead}
 }
 \value{
-A data frame describing the start and end coordinates of the sub-segments. The final segment, ending in 1, is not given (and not given an arrowhead) unless the final element of `splits` is 1.
+A data frame describing the start and end coordinates of the sub-segments. The final segment, ending in 1, is not given (and not given an arrowhead) unless the final element of \code{splits} is 1.
 }
 \description{
 Find where to place arrows

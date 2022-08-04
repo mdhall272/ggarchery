@@ -11,7 +11,7 @@
 Base ggproto classes for ggarchery
 }
 \seealso{
-[`ggplot2::ggplot2-ggproto`]
+\code{\link[ggplot2:ggplot2-ggproto]{ggplot2::ggplot2-ggproto}}
 }
 \keyword{datasets}
 \keyword{internal}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/legend-draw-ggarchery.R
 \name{draw_key_arrowpath}
 \alias{draw_key_arrowpath}
-\title{This function [geom_segment()] for `geom_arrowsegment()` and displays all the requested arrowheads.}
+\title{This function replaces \code{\link[ggplot2:draw_key]{ggplot2::draw_key_path}} and displays all the requested arrowheads.}
 \usage{
 draw_key_arrowpath(data, params, size)
 }
@@ -18,7 +18,7 @@ display in this key}
 A grid grob.
 }
 \description{
-This function [geom_segment()] for `geom_arrowsegment()` and displays all the requested arrowheads.
+This function replaces \code{\link[ggplot2:draw_key]{ggplot2::draw_key_path}} and displays all the requested arrowheads.
 }
 \examples{
 

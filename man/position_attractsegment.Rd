@@ -11,18 +11,18 @@ position_attractsegment(
 )
 }
 \arguments{
-\item{start_shave, end_shave}{The amount of distance to "shave" off the line between (`x`,`y`) and (`xend`,`yend`),
-at, respectively, the start and the end. Can be zero; cannot be negative. Units are determined by `type_shave`.}
+\item{start_shave, end_shave}{The amount of distance to "shave" off the line between (\code{x}, \code{y}) and (\code{xend}, \code{yend}),
+at, respectively, the start and the end. Can be zero; cannot be negative. Units are determined by \code{type_shave}.}
 
-\item{type_shave}{If "proportion" (the default) then this is a proportion of the total line length. If "distance"
+\item{type_shave}{If \code{"proportion"} (the default) then this is a proportion of the total line length. If "distance"
 then it is instead the raw distance along the line. The is only really recommended in combination with
-[ggplot2::coord_fixed()]; results can be quite odd otherwise.}
+\code{\link[ggplot2:coord_fixed]{ggplot2::coord_fixed()}}; results can be quite odd otherwise.}
 }
 \value{
 A ggproto object
 }
 \description{
-This position function is primarily intended for use with [geom_arrowsegment()], and solves the problem
+This position function is primarily intended for use with \code{\link[=geom_arrowsegment]{geom_arrowsegment()}}, and solves the problem
 that the user may, for reasons of clarity or aesthetics, not want their arrows to actually start or end at
 the position that they are "pointing from" or "pointing to". It works by shifting the points towards each
 other along the line joining them, by either a proportional amount or a fixed distance.
