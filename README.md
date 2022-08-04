@@ -38,7 +38,8 @@ The `arrows` parameter of `geom_arrowsegment()` also behaves exactly like the `a
 
 ```
 ggplot(tbl) + 
-  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), arrows = arrow(type = 'closed')) + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend), 
+                    arrows = arrow(type = 'closed')) + 
   xlim(c(0,1)) +
   ylim(c(0,1))
 ```
@@ -75,7 +76,8 @@ Other aesthetics also work as you would hope. There is a subtle difference in th
 tbl <- tbl %>% mutate(col = c("A", "B"))
 
 ggplot(tbl) + 
-  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, col = col), arrow_positions = 0.5)  + 
+  geom_arrowsegment(aes(x = x, xend = xend, y = y, yend = yend, col = col), 
+                    arrow_positions = 0.5)  + 
   xlim(c(0,1)) +
   ylim(c(0,1))
 ```
