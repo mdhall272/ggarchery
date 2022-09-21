@@ -84,7 +84,7 @@ ggplot(tbl) +
 
 <img src="man/figures/geom_arrowsegment_example5.png" width="400"/>
 
-Another key way that `geom_arrowsegment` differs from `geom_segment` is that it has a working `fill` aesthetic. This is only visible if the arrowhead is closed. Note that it must be specified as `fill` even if you want it to simply match the `colour` aesthetic, another difference in behaviour from `geom_segment`
+Another key way that `geom_arrowsegment` differs from `geom_segment` is that it has a working `fill` aesthetic. This is only visible if the arrowhead is closed. Note that it must be specified as `fill` even if you want it to simply match the `colour` aesthetic, another difference in behaviour from `geom_segment`.
 
 ```
 ggplot(tbl) + 
