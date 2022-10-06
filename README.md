@@ -224,7 +224,7 @@ ggplot(pt.tbl) +
 
 <img src="man/figures/position_attractsegment_example2.png" width="400"/>
 
-`position_attractsegment()` works by shortening the segment at the start and the end (by "attracting" the start and end points towards each other). It can do this in two ways, as determined by the `type_shave` option. If `type_shave = "proportion"` (the default), then it takes the proportions `start_shave` and `end_shave` away:
+`position_attractsegment()` works by shortening the segment at the start and the end ("attracting" the start and end points towards each other). It can do this in two ways, as determined by the `type_shave` option. If `type_shave = "proportion"` (the default), then it takes the proportions `start_shave` and `end_shave` away:
 
 ```
 ggplot(pt.tbl) + 
