@@ -1,9 +1,9 @@
 #' Nudge points towards each other along a line
 #'
-#' This position function is primarily intended for use with [`geom_arrowsegment()`], and solves the problem
-#' that the user may, for reasons of clarity or aesthetics, not want their arrows to actually start or end at
-#' the position that they are "pointing from" or "pointing to". It works by shifting the points towards each
-#' other along the line joining them, by either a proportional amount or a fixed distance.
+#' This position function is primarily intended for use with [`ggplot2::geom_segment()`] or  [`geom_arrowsegment()`],
+#' and solves the problem that the user may, for reasons of clarity or aesthetics, not want their arrows to actually
+#' start or end at the position that they are "pointing from" or "pointing to". It works by shifting the points towards
+#' each other along the line joining them, by either a proportional amount or a fixed distance.
 #'
 #'
 #' @family position adjustments
