@@ -84,8 +84,7 @@ ggplot(tbl) +
 
 <img src="man/figures/geom_arrowsegment_example5.png" width="400"/>
 
-Another key way that `geom_arrowsegment` differs from `geom_segment` is that it has a working `fill` aesthetic. This is only visible if the arrowhead is closed. Note that
-it must be specified as `fill` even if you want it to simply match the `colour` aesthetic.
+Another key way that `geom_arrowsegment` differs from `geom_segment` is that it has a working `fill` aesthetic. This is only visible if the arrowhead is closed. Note that it must be specified as `fill` even if you want it to simply match the `colour` aesthetic, another difference in behaviour from `geom_segment`.
 
 ```
 ggplot(tbl) + 
@@ -225,7 +224,7 @@ ggplot(pt.tbl) +
 
 <img src="man/figures/position_attractsegment_example2.png" width="400"/>
 
-`position_attractsegment()` works by shortening the segment at the start and the end (by "attracting" the start and end points towards each other). It can do this in two ways, as determined by the `type_shave` option. If `type_shave = "proportion"` (the default), then it takes the proportions `start_shave` and `end_shave` away:
+`position_attractsegment()` works by shortening the segment at the start and the end ("attracting" the start and end points towards each other). It can do this in two ways, as determined by the `type_shave` option. If `type_shave = "proportion"` (the default), then it takes the proportions `start_shave` and `end_shave` away:
 
 ```
 ggplot(pt.tbl) + 
