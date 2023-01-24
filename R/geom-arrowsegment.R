@@ -165,7 +165,7 @@ split_arrows <- function(x, xend, y, yend, splits){
 #' @import ggplot2 grid
 #' @export
 GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
-                            default_aes = aes(colour = "black", fill = "black", linewidth = 0.5, linetype = 1, size = 0.5, alpha = NA),
+                            default_aes = aes(colour = "black", fill = "black", linewidth = 0.5, linetype = 1, alpha = NA),
                             draw_panel = function(self, data, panel_params, coord, arrows = list(arrow()), arrow_fills = NULL, arrow_positions = 1,
                                                   lineend = "butt", linejoin = "round", na.rm = FALSE) {
 
