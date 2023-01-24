@@ -255,7 +255,7 @@ GeomArrowsegment <- ggproto("GeomArrowsegment", GeomSegment,
                                                gp = gpar(
                                                  col = alpha(bundle$colour, bundle$alpha),
                                                  fill = fill.value,
-                                                 lwd = bundle$size * .pt,
+                                                 lwd = bundle$linewidth * .pt,
                                                  lty = bundle$linetype,
                                                  lineend = lineend,
                                                  linejoin = linejoin
