@@ -9,7 +9,7 @@ attract_by_distance(x, xend, y, yend, length_start, length_end)
 \arguments{
 \item{x, xend, y, yend}{The coordinates of the start and end of the segment}
 
-\item{prop_start, prop_end}{How much to take off the start and end of the line (in the units of the data; beware this can make little sense unless both axes have the same units)}
+\item{length_start, length_end}{How much to take off the start and end of the line (in the units of the data; beware this can make little sense unless both axes have the same units)}
 }
 \value{
 A named list of new coordinates for the start and end of the line
