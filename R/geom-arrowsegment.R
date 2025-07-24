@@ -39,7 +39,7 @@ NULL
 #' `arrow_positions` and each segment defined by that argument is ended by the respective
 #' element of this one. The default is [`grid::arrow()`] with default parameters.
 #' @param arrow_fills A vector of fill colours for the arrowheads, behaves as
-#' the `arrow_fill` option in [`geom_segment`]. This will overrule a fill aesthetic in
+#' the `arrow_fill` option in [`ggplot2::geom_segment`]. This will overrule a fill aesthetic in
 #' the same way that specifying a single `fill` outside `aes` specification will.
 #' @import ggplot2 tidyr dplyr purrr
 #' @importFrom magrittr %>%
